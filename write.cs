@@ -20,6 +20,9 @@ namespace sepWake2
                 'a', 'b', 'c', 'd', 'e', 'f'
                 };
 
+            //MemoryStream a = new MemoryStream();
+            //a.ReadAsync
+
             for (int c=0; c<text.ToString().Length; c++)
             {
                 if (c != len-1 && t[c] =='&' && colorlist.Exists(a => a == t[c+1]))

@@ -10,7 +10,7 @@ namespace sepWake2
         public override String BriefHelp => "create, edit, remove alarms";
         public static Dictionary<String, Action<List<string>>> CommandList = new Dictionary<string, Action<List<string>>>{
             {"list", listAlarm}, {"skip", skipAlarm}, {"edit", editAlarm}, {"export", exportAlarm}, {"import", importAlarm}, 
-            {"disable", disableAlarm}, {"call", callAlarmNow}, {"reset", resetAlarm}, {"help", onHelp}, {"start", startAlarm},
+            {"disable", disableAlarm}, {"call", callAlarmNow}, {"help", onHelp}, {"start", startAlarm},
             {"enable", enableAlarm}, {"reload", reloadAlarm}, {"alarmfilepath", ShowAlarmFilePath}, {"unskip", unskipAlarm}
         }; 
 
@@ -34,7 +34,7 @@ namespace sepWake2
         }
         private static void listAlarm(List<String> args)
         {
-            w.writeline($"&bindex, name, type, ringtime, enabled, skip"+ base_.SHELL_DEFAULT_COLORCODE_STRING);
+            w.writeline($"&bname, type, ringtime, enabled, skip"+ base_.SHELL_DEFAULT_COLORCODE_STRING);
 
             foreach (alarm a in alarm.AlarmList) 
                 w.writeline($"'{a.Name}' '{a.Type.ToString()}' {a.RingTime[0].ToString()+":"+a.RingTime[1].ToString()}"
@@ -70,12 +70,6 @@ namespace sepWake2
         private static void skipAlarm(List<String> args) => alarm.AlarmList.Find(aa => aa.Name == args[2]).Skip = true;
         private static void unskipAlarm(List<String> args) => alarm.AlarmList.Find(aa => aa.Name == args[2]).Skip = false;
         private static void callAlarmNow(List<String> args) => alarm.RaiseRing(alarm.AlarmRingType.Ring, new alarm());
-        private static void resetAlarm(List<String> args)
-        {
-            File.Delete(alarm.AlarmFilePath);
-            File.Create(alarm.AlarmFilePath);
-            reloadAlarm(null);
-        }
 
 
 

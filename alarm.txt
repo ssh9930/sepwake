@@ -1,8 +1,8 @@
 
-[test-1]
-RingTime=5:9
-AlarmType=Standard
-Count=5
+[swatch]
+RingTime=-1:-1
+AlarmType=Stopwatch
+Count=0
 PresleepTime=30
 PresleepPrepareTime=5
 SleepTime=360
@@ -11,10 +11,20 @@ PresleepEnabled=True
 
 [test-2]
 RingTime=-1:-1
-AlarmType=Stopwatch
-Count=730
+AlarmType=Standard
+Count=0
 PresleepTime=30
 PresleepPrepareTime=5
 SleepTime=360
 Enabled=True
+PresleepEnabled=True
+
+[test-3]
+RingTime=6:0
+AlarmType=Standard
+Count=0
+PresleepTime=30
+PresleepPrepareTime=5
+SleepTime=360
+Enabled=False
 PresleepEnabled=True
